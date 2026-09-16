@@ -74,6 +74,9 @@ class _EditEventScreenState extends State<EditEventScreen> {
     selectedEventDate = widget.event.eventDate;
     formatDate = DateFormat('yyyy/MM/dd').format(widget.event.eventDate);
     selectedEventTime = TimeOfDay.fromDateTime(widget.event.eventDate);
+    selectedIndex = widget.event.eventCategoryIndex > 0
+        ? widget.event.eventCategoryIndex - 1
+        : 0;
     }
 
   @override
