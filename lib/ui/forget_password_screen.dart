@@ -1,15 +1,14 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:untitled1/utiles/app_assets.dart';
-import 'package:untitled1/utiles/app_routes.dart';
-import 'package:untitled1/utiles/app_styles.dart';
-import 'package:untitled1/utiles/firebase_utils.dart';
+import 'package:untitled1/utils/app_assets.dart';
+import 'package:untitled1/utils/app_styles.dart';
+import 'package:untitled1/utils/firebase_utils.dart';
 import 'package:untitled1/widgets/custom_elevated_button.dart';
 import 'package:untitled1/widgets/custom_text_field.dart';
 import '../providers/theme_provider.dart';
-import '../utiles/app_colors.dart';
-import '../utiles/size_utiles.dart';
+import '../utils/app_colors.dart';
+import '../utils/size_utils.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
@@ -41,7 +40,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                           ),
                         ),
                         child: IconButton(onPressed: () {
-                        Navigator.of(context).pushNamed(AppRoutes.loginRouteName);
+                        Navigator.pop(context);
                         },
                             icon: Icon(Icons.arrow_back_ios_new_rounded
                               , color: themeProvider.isDarkMode ? AppColors.whiteColor : AppColors.mainLightColor,

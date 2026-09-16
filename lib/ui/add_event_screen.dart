@@ -1,21 +1,19 @@
-import 'dart:math';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/model/event.dart';
-import 'package:untitled1/utiles/app_assets.dart';
-import 'package:untitled1/utiles/app_colors.dart';
-import 'package:untitled1/utiles/app_styles.dart';
-import 'package:untitled1/utiles/firebase_utils.dart';
-import 'package:untitled1/utiles/snack_bar_utiles.dart';
+import 'package:untitled1/utils/app_assets.dart';
+import 'package:untitled1/utils/app_colors.dart';
+import 'package:untitled1/utils/app_styles.dart';
+import 'package:untitled1/utils/firebase_utils.dart';
+import 'package:untitled1/utils/snack_bar_utils.dart';
 import 'package:untitled1/widgets/custom_elevated_button.dart';
 import 'package:untitled1/widgets/custom_tab_item.dart';
 import 'package:untitled1/widgets/custom_text_field.dart';
 import 'package:untitled1/widgets/data_or_time_widget.dart';
 import '../providers/theme_provider.dart';
-import '../utiles/app_theme.dart';
-import '../utiles/size_utiles.dart';
+import '../utils/app_theme.dart';
+import '../utils/size_utils.dart';
 
 class AddEventScreen extends StatefulWidget {
    const AddEventScreen({super.key});
@@ -309,7 +307,7 @@ class _AddEventScreenState extends State<AddEventScreen> {
              );
          Navigator.pop(context);
        }).catchError((error){
-         print('Error : ${e.toString()}');
+         print('Error : ${error.toString()}');
        });
      }
   }

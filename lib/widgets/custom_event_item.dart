@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/model/event.dart';
 import 'package:untitled1/providers/theme_provider.dart';
-import 'package:untitled1/utiles/app_colors.dart';
-import 'package:untitled1/utiles/app_styles.dart';
-import 'package:untitled1/utiles/firebase_utils.dart';
-import '../utiles/app_assets.dart';
-import '../utiles/size_utiles.dart';
-import '../utiles/snack_bar_utiles.dart';
+import 'package:untitled1/utils/app_colors.dart';
+import 'package:untitled1/utils/app_styles.dart';
+import 'package:untitled1/utils/firebase_utils.dart';
+import '../utils/app_assets.dart';
+import '../utils/size_utils.dart';
+import '../utils/snack_bar_utils.dart';
 
 class CustomEventItem extends StatefulWidget {
    final Event event ;

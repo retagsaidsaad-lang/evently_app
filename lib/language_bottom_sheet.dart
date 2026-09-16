@@ -1,7 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled1/utiles/size_utiles.dart';
+import 'package:untitled1/utils/size_utils.dart';
 
 class LanguageBottomSheet extends StatefulWidget {
   const LanguageBottomSheet({super.key});

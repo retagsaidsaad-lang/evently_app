@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:untitled1/utiles/app_colors.dart';
-
+import 'package:untitled1/utils/app_colors.dart';
 import '../providers/theme_provider.dart';
-import '../utiles/size_utiles.dart';
+import '../utils/size_utils.dart';
 
 class EditOrDeleteWidget extends StatelessWidget {
   final Widget icon ;

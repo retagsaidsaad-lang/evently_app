@@ -1,12 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:untitled1/utiles/app_colors.dart';
-import 'package:untitled1/utiles/firebase_utils.dart';
+import 'package:untitled1/utils/app_colors.dart';
+import 'package:untitled1/utils/firebase_utils.dart';
 import 'package:untitled1/widgets/custom_text_field.dart';
 import '../model/event.dart';
 import '../providers/theme_provider.dart';
-import '../utiles/size_utiles.dart';
+import '../utils/size_utils.dart';
 import '../widgets/custom_event_item.dart';
 
 class FavoriteTab extends StatefulWidget {

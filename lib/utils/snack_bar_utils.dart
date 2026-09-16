@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:untitled1/utiles/app_colors.dart';
-import 'package:untitled1/utiles/app_styles.dart';
-import 'package:untitled1/utiles/size_utiles.dart';
+import 'package:untitled1/utils/app_colors.dart';
+import 'package:untitled1/utils/app_styles.dart';
 
 class SnackBarUtils {
   static void showSnackBar({

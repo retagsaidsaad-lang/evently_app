@@ -3,16 +3,15 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/providers/user_provider.dart';
-import 'package:untitled1/utiles/app_styles.dart';
-import 'package:untitled1/utiles/firebase_utils.dart';
+import 'package:untitled1/utils/app_styles.dart';
+import 'package:untitled1/utils/firebase_utils.dart';
 import 'package:untitled1/widgets/custom_event_item.dart';
 import 'package:untitled1/widgets/custom_tab_item.dart';
-
 import '../model/event.dart';
 import '../providers/theme_provider.dart';
 import '../ui/event_details_screen.dart';
-import '../utiles/app_colors.dart';
-import '../utiles/size_utiles.dart';
+import '../utils/app_colors.dart';
+import '../utils/size_utils.dart';
 
 class HomeTab extends StatefulWidget {
   const HomeTab({super.key});

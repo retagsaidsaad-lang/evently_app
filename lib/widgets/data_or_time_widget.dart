@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../utiles/size_utiles.dart';
+import '../utils/size_utils.dart';
 
 class DataOrTimeWidget extends StatelessWidget {
   final Widget icon ;

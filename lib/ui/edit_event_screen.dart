@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../model/event.dart';
 import '../providers/theme_provider.dart';
-import '../utiles/app_assets.dart';
-import '../utiles/app_colors.dart';
-import '../utiles/app_styles.dart';
-import '../utiles/app_theme.dart';
-import '../utiles/firebase_utils.dart';
-import '../utiles/size_utiles.dart';
-import '../utiles/snack_bar_utiles.dart';
+import '../utils/app_assets.dart';
+import '../utils/app_colors.dart';
+import '../utils/app_styles.dart';
+import '../utils/app_theme.dart';
+import '../utils/firebase_utils.dart';
+import '../utils/size_utils.dart';
+import '../utils/snack_bar_utils.dart';
 import '../widgets/custom_elevated_button.dart';
 import '../widgets/custom_tab_item.dart';
 import '../widgets/custom_text_field.dart';
@@ -74,7 +74,7 @@ class _EditEventScreenState extends State<EditEventScreen> {
     selectedEventDate = widget.event.eventDate;
     formatDate = DateFormat('yyyy/MM/dd').format(widget.event.eventDate);
     selectedEventTime = TimeOfDay.fromDateTime(widget.event.eventDate);
-  }
+    }
 
   @override
   void dispose() {
@@ -187,7 +187,6 @@ class _EditEventScreenState extends State<EditEventScreen> {
                   itemCount: eventNameList.length,
                 ),
               ),
-
               Text(
                 'events_input_title'.tr(),
                 style: Theme.of(context).textTheme.headlineMedium,
@@ -256,17 +255,19 @@ class _EditEventScreenState extends State<EditEventScreen> {
     );
   }
 
-  void onChooseDate() async {
+  void onChooseDate() async{
     var chooseDate = await showDatePicker(
-      context: context,
-      initialDate: selectedEventDate ?? DateTime.now(),
-      firstDate: DateTime.now(),
-      lastDate: DateTime.now().add(const Duration(days: 365)),
+        context: context,
+
+        initialDate: DateTime.now(),
+        firstDate: DateTime.now(),
+        lastDate: DateTime.now().add(Duration(days: 365))
     );
-    if (chooseDate != null) {
+    if(chooseDate!= null){
+      selectedEventDate = chooseDate ;
+      formatDate = DateFormat('yyyy/dd/MM').format(selectedEventDate!) ;
       setState(() {
-        selectedEventDate = chooseDate;
-        formatDate = DateFormat('yyyy/MM/dd').format(selectedEventDate!);
+
       });
     }
   }
@@ -299,6 +300,14 @@ class _EditEventScreenState extends State<EditEventScreen> {
 
 
   void updateEvent() async {
+    if (selectedEventDate == null) {
+      SnackBarUtils.showErrorSnackBar(
+        context: context,
+        message: 'Please select event date.',
+      );
+      return;
+    }
+
     DateTime updatedDateTime = DateTime(
       selectedEventDate!.year,
       selectedEventDate!.month,
@@ -319,13 +328,15 @@ class _EditEventScreenState extends State<EditEventScreen> {
     );
 
     await FirebaseUtils.updateEventInFireStore(updatedEvent);
-    if (mounted) {
-      Navigator.pop(context, updatedEvent); 
-      SnackBarUtils.showSuccessSnackBar(
-        context: context,
-        message: 'updated_event'.tr(),
-      );
-    }
+
+    if (!mounted) return;
+
+    Navigator.pop(context, updatedEvent);
+
+    SnackBarUtils.showSuccessSnackBar(
+      context: context,
+      message: 'updated_event'.tr(),
+    );
   }
 }
 

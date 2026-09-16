@@ -13,9 +13,8 @@ import 'package:untitled1/ui/home_screen.dart';
 import 'package:untitled1/ui/login_screen.dart';
 import 'package:untitled1/ui/onBoarding_screen.dart';
 import 'package:untitled1/ui/register_screen.dart';
-import 'package:untitled1/utiles/app_routes.dart';
-import 'package:untitled1/utiles/app_theme.dart';
-
+import 'package:untitled1/utils/app_routes.dart';
+import 'package:untitled1/utils/app_theme.dart';
 import 'firebase_options.dart';
 import 'ui/onboarding_light_screen.dart';
 

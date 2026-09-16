@@ -2,19 +2,18 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:untitled1/utiles/app_assets.dart';
-import 'package:untitled1/utiles/app_routes.dart';
-import 'package:untitled1/utiles/app_styles.dart';
-import 'package:untitled1/utiles/firebase_utils.dart';
-import 'package:untitled1/utiles/size_utiles.dart';
+import 'package:untitled1/utils/app_assets.dart';
+import 'package:untitled1/utils/app_routes.dart';
+import 'package:untitled1/utils/app_styles.dart';
+import 'package:untitled1/utils/firebase_utils.dart';
+import 'package:untitled1/utils/size_utils.dart';
 import 'package:untitled1/widgets/custom_elevated_button.dart';
 import 'package:untitled1/widgets/custom_text_field.dart';
-
 import '../model/my_user.dart';
 import '../providers/theme_provider.dart';
 import '../providers/user_provider.dart';
-import '../utiles/app_colors.dart';
-import '../utiles/snack_bar_utiles.dart';
+import '../utils/app_colors.dart';
+import '../utils/snack_bar_utils.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -27,6 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
   var formKey = GlobalKey <FormState> ();
   TextEditingController emailController = TextEditingController(text: 'retag@gmail.com') ;
   TextEditingController passwordController = TextEditingController(text: '123456') ;
+  bool isObscure = true;
   @override
   Widget build(BuildContext context) {
     var themProvider = Provider.of<ThemeProvider>(context);
@@ -76,7 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       borderColor: Theme.of(context).dividerColor,
                       fill: true,
                       keyboardType: TextInputType.phone,
-                      obscureText: true,
+                      obscureText: isObscure,
                       controller: passwordController,
                       validator: (text) {
                         if(text == null || text.trim().isEmpty){
@@ -89,7 +89,16 @@ class _LoginScreenState extends State<LoginScreen> {
                       },
                       filledColor: themProvider.isDarkMode ? AppColors.darkInputColor : AppColors.whiteColor,
                       prefixIcon: Icon(Icons.lock_outlined, color: AppColors.lightGreyColor,),
-                      suffixIcon: Icon(Icons.visibility_off_outlined ,color: AppColors.lightGreyColor),
+                      suffixIcon: IconButton(
+                          icon: Icon(
+                              isObscure ?Icons.visibility_off_outlined : Icons.visibility,
+                              color: AppColors.lightGreyColor),
+                        onPressed: () {
+                          setState(() {
+                            isObscure = !isObscure;
+                          });
+                        },
+                      ),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,

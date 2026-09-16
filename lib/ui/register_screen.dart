@@ -4,17 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/model/my_user.dart';
 import 'package:untitled1/providers/user_provider.dart';
-import 'package:untitled1/utiles/app_assets.dart';
-import 'package:untitled1/utiles/app_styles.dart';
-import 'package:untitled1/utiles/snack_bar_utiles.dart';
-import 'package:untitled1/utiles/firebase_utils.dart';
-import 'package:untitled1/utiles/size_utiles.dart';
+import 'package:untitled1/utils/app_assets.dart';
+import 'package:untitled1/utils/app_styles.dart';
+import 'package:untitled1/utils/snack_bar_utils.dart';
+import 'package:untitled1/utils/firebase_utils.dart';
+import 'package:untitled1/utils/size_utils.dart';
 import 'package:untitled1/widgets/custom_elevated_button.dart';
 import 'package:untitled1/widgets/custom_text_field.dart';
-
 import '../providers/theme_provider.dart';
-import '../utiles/app_colors.dart';
-import '../utiles/app_routes.dart';
+import '../utils/app_colors.dart';
+import '../utils/app_routes.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -28,6 +27,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
   TextEditingController emailController = TextEditingController(text: 'retag@gmail.com' ) ;
   TextEditingController passwordController = TextEditingController(text: '123456') ;
   TextEditingController rePasswordController = TextEditingController(text: '123456') ;
+  bool isPasswordObscure = true;
+  bool isConfirmPasswordObscure = true;
   var formKey = GlobalKey <FormState> ();
   @override
   Widget build(BuildContext context) {
@@ -94,7 +95,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     borderColor: Theme.of(context).dividerColor,
                     fill: true,
                     keyboardType: TextInputType.phone,
-                    obscureText: true,
+                    obscureText: isPasswordObscure,
                     controller: passwordController,
                     validator: (text) {
                       if(text == null || text.trim().isEmpty){
@@ -107,7 +108,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     },
                     filledColor: themProvider.isDarkMode ? AppColors.darkInputColor : AppColors.whiteColor,
                     prefixIcon: Icon(Icons.lock_outlined, color: AppColors.lightGreyColor,),
-                    suffixIcon: Icon(Icons.visibility_off_outlined ,color: AppColors.lightGreyColor),
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                          isPasswordObscure ?Icons.visibility_off_outlined : Icons.visibility,
+                          color: AppColors.lightGreyColor
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          isPasswordObscure = !isPasswordObscure;
+                        });
+                      },
+                    ),
                   ),
                   CustomTextField(
                     hintText: 'auth_confirm_password'.tr(),
@@ -115,7 +126,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     borderColor: Theme.of(context).dividerColor,
                     fill: true,
                     keyboardType: TextInputType.phone,
-                    obscureText: true,
+                    obscureText: isConfirmPasswordObscure,
                     controller: rePasswordController,
                     validator: (text) {
                       if(text == null || text.trim().isEmpty){
@@ -128,7 +139,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     },
                     filledColor: themProvider.isDarkMode ? AppColors.darkInputColor : AppColors.whiteColor,
                     prefixIcon: Icon(Icons.lock_outlined, color: AppColors.lightGreyColor,),
-                    suffixIcon: Icon(Icons.visibility_off_outlined ,color: AppColors.lightGreyColor),
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                          isConfirmPasswordObscure ?Icons.visibility_off_outlined : Icons.visibility,
+                          color: AppColors.lightGreyColor
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          isConfirmPasswordObscure = !isConfirmPasswordObscure;
+                        });
+                      },
+                    ),
                   ),
                   SizedBox(height: context.height*0.04,),
                   CustomElevatedButton(

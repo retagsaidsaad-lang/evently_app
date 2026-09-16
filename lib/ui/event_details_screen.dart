@@ -1,15 +1,15 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:untitled1/utiles/app_colors.dart';
-import 'package:untitled1/utiles/app_styles.dart';
+import 'package:untitled1/utils/app_colors.dart';
+import 'package:untitled1/utils/app_styles.dart';
 import 'package:untitled1/widgets/edit_or_delete_widget.dart';
 import '../model/event.dart';
 import '../providers/theme_provider.dart';
-import '../utiles/app_assets.dart';
-import '../utiles/firebase_utils.dart';
-import '../utiles/size_utiles.dart';
-import '../utiles/snack_bar_utiles.dart';
+import '../utils/app_assets.dart';
+import '../utils/firebase_utils.dart';
+import '../utils/size_utils.dart';
+import '../utils/snack_bar_utils.dart';
 import '../widgets/custom_text_field.dart';
 import 'edit_event_screen.dart';
 
